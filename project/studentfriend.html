@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudentFriend - CSE Resources</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">StudentFriend</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#programming">Programming</a></li>
+            <li><a href="#online-compilers">Online Compilers</a></li>
+            <li><a href="#job-tracker">Job Tracker</a></li>
+            <li><a href="#notes">My Notes</a></li>
+            <li><a href="#login" id="login-link">Login</a></li>
+            <li><a href="#register" id="register-link">Register</a></li>
+            <li><a href="logout.php"id="logout-link">Logout</a></li>
+        
+            <li class="visitors-counter"><i class="fas fa-users"></i> <span id="visitor-count">0</span></li>
+           
+
+        </ul>
+        <button class="mobile-menu" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+<!-- Login Modal -->
+<div id="login-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Login</h3>
+            <button class="close-modal" onclick="closeLoginModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" name="password" placeholder="Enter your password" required>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="cancel-btn" onclick="closeLoginModal()">Cancel</button>
+                    <button type="submit" class="save-btn">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Register Modal -->
+<div id="register-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Register</h3>
+            <button class="close-modal" onclick="closeRegisterModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form id="register-form">
+                <div class="form-group">
+                    <label for="register-name">Full Name</label>
+                    <input type="text" id="register-name" name="name" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-email">Email</label>
+                    <input type="email" id="register-email" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-password">Password</label>
+                    <input type="password" id="register-password" name="password" placeholder="Enter your password" required>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="cancel-btn" onclick="closeRegisterModal()">Cancel</button>
+                    <button type="submit" class="save-btn">Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="feedback-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Feedback</h3>
+        <button class="close-modal" onclick="closeFeedbackModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="feedback-form">
+          <div class="form-group">
+            <label for="feedback-text">Your Feedback</label>
+            <textarea id="feedback-text" placeholder="We value your input..." required></textarea>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="cancel-btn" onclick="closeFeedbackModal()">Cancel</button>
+            <button type="submit" class="save-btn">Submit</button>
+          </div>
+        </form>
+        <div id="feedback-message"></div>
+      </div>
+    </div>
+  </div>
+  
+
+
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Your Complete CSE Study Companion</h1>
+            <p>Access everything you need for your Computer Science journey in one place</p>
+            <div class="features">
+                <div class="feature-card">
+                    <h3>Study Materials</h3>
+                    <p>Comprehensive resources for all subjects</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Career Guidance</h3>
+                    <p>Expert advice for your career path</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Placement Updates</h3>
+                    <p>Latest placement opportunities</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="programming" class="programming">
+        <div class="container">
+            <h2>Programming Languages</h2>
+            <div class="language-grid">
+                <div class="language-card" data-language="python">
+                    <img src="https://cdn.iconscout.com/icon/free/png-256/python-2-226051.png" alt="Python">
+                    <h3>Python</h3>
+                    <p>Learn Python programming</p>
+                    <div class="progress-container">
+                        <div class="progress-label">Your Progress: <span class="progress-percent">0%</span></div>
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                    </div>
+                    <div class="btn-container">
+                        <a href="https://drive.google.com/drive/folders/1N71NiU6L3wNR1CnU4fY1tr9ux5eYUusn?usp=drive_link" class="btn">Start Learning</a>                        
+                        <a href="https://drive.google.com/file/d/1RonpBc7mLQBG4hCknJH0DbZXPgdhWJoN/view?usp=classroom_web&authuser=2" class="btn btn-secondary">Syllabus</a>
+                        <button class="btn update-progress">Update Progress</button>
+                    </div>   
+                </div>
+                <div class="language-card" data-language="c">
+                    <img src="https://cdn.iconscout.com/icon/free/png-256/c-programming-569564.png" alt="C">
+                    <h3>C</h3>
+                    <p>Learn C programming</p>
+                    <div class="progress-container">
+                        <div class="progress-label">Your Progress: <span class="progress-percent">0%</span></div>
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                    </div>
+                    <div class="btn-container">
+                        <a href="https://drive.google.com/drive/folders/1R8eMZ3hU6BCKK1yMfsmFPZV76_4yk2Lr" class="btn">Start Learning</a>           
+                        <a href="https://drive.google.com/file/d/1jB9ktsjl2zVQc_Zc9YTUU5YcMXxMp0r2/view?usp=classroom_web&authuser=0" class="btn btn-secondary">Syllabus</a>
+                        <button class="btn update-progress">Update Progress</button>
+                    </div>
+                </div>
+                <div class="language-card" data-language="cpp">
+                    <img src="https://miro.medium.com/v2/resize:fit:1200/1*a1lHeMw5n3WIINYnH28uAA.jpeg" alt="C++">
+                    <h3>C++</h3>
+                    <p>Learn C++ programming</p>
+                    <div class="progress-container">
+                        <div class="progress-label">Your Progress: <span class="progress-percent">0%</span></div>
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                    </div>
+                    <div class="btn-container">
+                        <a href="https://drive.google.com/drive/folders/1cmO2CP2zyVHH8jJs5hYp3SiqTl_6jdIE?usp=drive_link" class="btn">Start Learning</a>
+                        <a href="https://classroom.google.com/u/0/c/NzAyNTk0MjQ4NTky/m/NzE3NTI5MDg2ODgx/details" class="btn btn-secondary">Syllabus</a>
+                        <button class="btn update-progress">Update Progress</button>
+                    </div>
+                </div>
+                <div class="language-card" data-language="javascript">
+                    <img src="https://cdn.iconscout.com/icon/free/png-256/javascript-2752148-2284965.png" alt="JavaScript">
+                    <h3>JavaScript</h3>
+                    <p>Web development essentials</p>
+                    <div class="progress-container">
+                        <div class="progress-label">Your Progress: <span class="progress-percent">0%</span></div>
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                    </div>
+                    <div class="btn-container">
+                        <a href="https://drive.google.com/drive/folders/1P6fElJbfFxMHpkwti2BFsWYTHXgQyQ6R?usp=drive_link" class="btn">Start Learning</a>
+                        <a href="https://drive.google.com/file/d/1OPRQp6NvRIMdb6-O51Zk4EZTb65Khc-p/view?usp=sharing" class="btn btn-secondary">Syllabus</a>
+                        <button class="btn update-progress">Update Progress</button>
+                    </div>
+                </div>
+                <div class="language-card" data-language="">
+                    <img src="https://th.bing.com/th/id/OIP.xi_VY54V535hztHz11VTyQHaFL?rs=1&pid=ImgDetMain" alt="JavaScript">
+                    <h3>Web Development</h3>
+                    <p>Web development essentials</p>
+                    <div class="progress-container">
+                        <div class="progress-label">Your Progress: <span class="progress-percent">0%</span></div>
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                    </div>
+                    <div class="btn-container">
+                        <a href="https://drive.google.com/drive/folders/1KKHzB-IWHlXYJogLSkyl5QPLGLoA8Vkv?usp=sharing" class="btn">Start Learning</a>
+                        <a href="https://drive.google.com/file/d/1bg64kdl8VJAga5eq2-PTNcYjbKxCBoDg/view" class="btn btn-secondary">Syllabus</a>
+                        <button class="btn update-progress">Update Progress</button>
+                    </div>
+                </div>
+                <div class="language-card" data-language="">
+                    <img src="https://pandorafms.com/blog/wp-content/uploads/2018/05/what-is-an-algorithm-featured.png" alt="JavaScript">
+                    <h3>Algorithms</h3>
+                    <p>Algorithms essentials</p>
+                    <div class="progress-container">
+                        <div class="progress-label">Your Progress: <span class="progress-percent">0%</span></div>
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                    </div>
+                    <div class="btn-container">
+                        <a href="https://drive.google.com/drive/folders/18YMNUtspegTAPXXP3QOLtItqGgu9yvWO" class="btn">Start Learning</a>
+                        <a href="https://docs.google.com/document/d/1XhXysqhAcMtDrl7OUMoaf8tsSPxLCC2VF-hvFlBTbGU/edit?tab=t.0" class="btn btn-secondary">Syllabus</a>
+                        <button class="btn update-progress">Update Progress</button>
+                    </div>
+                </div>
+                <div class="language-card" data-language="">
+                    <img src="https://kdd-public-files.s3.amazonaws.com/large_BLOG_DBMS_d561e11abd.png" alt="JavaScript">
+                    <h3>DBMS</h3>
+                    <p>Data Base Management System s</p>
+                    <div class="progress-container">
+                        <div class="progress-label">Your Progress: <span class="progress-percent">0%</span></div>
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                    </div>
+                    <div class="btn-container">
+                        <a href="https://www.geeksforgeeks.org/dbms/" class="btn">Start Learning</a>
+                        <a href="https://docs.google.com/document/d/17oltGsl6PBspshgBD5ExXDQT3B0jvb9uqWxMKIYL_7I/edit?tab=t.0" class="btn btn-secondary">Syllabus</a>
+                        <button class="btn update-progress">Update Progress</button>
+                    </div>
+                </div>
+                <div class="language-card" data-language="ds">
+                    <img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/data-structure-5-902326.png" alt="Data Structures">
+                    <h3>Data Structures</h3>
+                    <p>Fundamental computer science concepts</p>
+                    <div class="progress-container">
+                        <div class="progress-label">Your Progress: <span class="progress-percent">0%</span></div>
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                    </div>
+                    <div class="btn-container">
+                        <a href="https://drive.google.com/drive/folders/17E1wkALB4Kro5Bi9TDfa4Bj_TvX-DDk2?usp=sharing" class="btn">Start Learning</a>
+                        <a href="https://drive.google.com/file/d/1zQXigpiFhE64soyihLUi0jkrb7s4lg1J/view" class="btn btn-secondary">Syllabus</a>
+                        <button class="btn update-progress">Update Progress</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="online-compilers" class="online-compilers">
+        <div class="container">
+            <h2>Online Compilers</h2>
+            <div class="compiler-container">
+                <div class="compiler-card">
+                    <img src="https://play-lh.googleusercontent.com/8P6SxJhbeZP2PXbvw2ceiA3lrjaTNuP5OYb5mmgY4rd50hKDpvOgTfiDnaipvnY3Sf2E" alt="C Compiler">
+            <h3>C Compiler</h3>
+            <button onclick="window.open('https://www.onlinegdb.com/online_c_compiler')">Use Compiler</button>
+        </div>
+        <div class="compiler-card">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGAIPlPCT2-PdrSUXQs0zdrYSezfLFbntaNg&s" alt="C++ Compiler">
+            <h3>C++ Compiler</h3>
+            <button onclick="window.open('https://www.onlinegdb.com/online_c++_compiler')">Use Compiler</button>
+        </div>
+        <div class="compiler-card">
+            <img src="https://editor.analyticsvidhya.com/uploads/58004python.jpg" alt="Python Compiler">
+            <h3>Python Compiler</h3>
+            <button onclick="window.open('https://www.programiz.com/python-programming/online-compiler')">Use Compiler</button>
+        </div>
+        <div class="compiler-card">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTplL6alqHZ384kCyiN__YHPa-YwG0SeneEhA&s" alt="JavaScript Compiler">
+            <h3>JavaScript Compiler</h3>
+            <button onclick="window.open('https://jsfiddle.net/')">Use Compiler</button>
+        </div>
+        <div class="compiler-card">
+            <img src="https://www.codehunger.in/assets/image/freetool/php-compiler/php-banner.png" alt="php Compiler">
+            <h3>PHP</h3>
+            <button onclick="window.open('https://www.programiz.com/php/online-compiler/')">Use Compiler</button>
+        </div>
+    </div>
+    </section>
+
+    <section id="job-tracker" class="career-section">
+        <div class="container">
+            <h2>Job Opportunities & Career Resources</h2>
+            <div class="job-search">
+                <h3>Find CSE Job Openings</h3>
+                <p>Search for job roles and opportunities across top companies</p>
+                <div class="search-container">
+                    <input type="text" id="roleInput" placeholder="Enter job role (e.g., Web Developer)">
+                    <button onclick="findJobs()">Search</button>
+                </div>
+                <div id="results"></div>
+            </div>
+            
+            <div class="internship-section">
+                <h3>Internship Opportunities</h3>
+                <p>Find the best internships to kickstart your career</p>
+                <div class="horizontal-scroll-container">
+                    <div class="internship-cards">
+                        <div class="internship-card">
+                            <img src="https://cdn.iconscout.com/icon/free/png-256/google-160-189824.png" alt="Google" class="internship-logo">
+                            <h4>Google Summer Internship</h4>
+                            <p class="internship-location"><i class="fas fa-map-marker-alt"></i> Multiple Locations</p>
+                            <p class="internship-duration"><i class="fas fa-calendar-alt"></i> 3 Months</p>
+                            <a href="https://careers.google.com/students/" target="_blank" class="btn">Apply Now</a>
+                        </div>
+                        
+
+                        <div class="internship-card">
+                            <img src="https://cdn.iconscout.com/icon/free/png-256/microsoft-26-722716.png" alt="Microsoft" class="internship-logo">
+                            <h4>Microsoft Engage Program</h4>
+                            <p class="internship-location"><i class="fas fa-map-marker-alt"></i> Remote & On-site</p>
+                            <p class="internship-duration"><i class="fas fa-calendar-alt"></i> 2-3 Months</p>
+                            <a href="https://careers.microsoft.com/students/" target="_blank" class="btn">Apply Now</a>
+                        </div>
+                        <div class="internship-card">
+                            <img src="https://cdn.iconscout.com/icon/free/png-256/amazon-43-432492.png" alt="Amazon" class="internship-logo">
+                            <h4>Amazon SDE Internship</h4>
+                            <p class="internship-location"><i class="fas fa-map-marker-alt"></i> Multiple Locations</p>
+                            <p class="internship-duration"><i class="fas fa-calendar-alt"></i> 3-6 Months</p>
+                            <a href="https://www.amazon.jobs/en/teams/internships-for-students" target="_blank" class="btn">Apply Now</a>
+                        </div>
+                        <div class="internship-card">
+                            <img src="https://1000logos.net/wp-content/uploads/2016/10/Apple-Logo.png" alt="Apple" class="internship-logo">
+                            <h4>Apple Software Engineering</h4>
+                            <p class="internship-location"><i class="fas fa-map-marker-alt"></i> Cupertino & Remote</p>
+                            <p class="internship-duration"><i class="fas fa-calendar-alt"></i> 3-6 Months</p>
+                            <a href="https://www.apple.com/careers/us/students.html" target="_blank" class="btn">Apply Now</a>
+                        </div>
+                        <div class="internship-card">
+                            <img src="https://cdn.iconscout.com/icon/free/png-256/meta-2-461831.png" alt="Meta" class="internship-logo">
+                            <h4>Meta Software Engineer Intern</h4>
+                            <p class="internship-location"><i class="fas fa-map-marker-alt"></i> Multiple Locations</p>
+                            <p class="internship-duration"><i class="fas fa-calendar-alt"></i> 12-16 Weeks</p>
+                            <a href="https://www.metacareers.com/careerprograms/students" target="_blank" class="btn">Apply Now</a>
+                        </div>
+                        <div class="internship-card">
+                            <img src="https://cdn.iconscout.com/icon/free/png-256/netflix-7-282796.png" alt="Netflix" class="internship-logo">
+                            <h4>Netflix Engineering Internship</h4>
+                            <p class="internship-location"><i class="fas fa-map-marker-alt"></i> Los Gatos, CA</p>
+                            <p class="internship-duration"><i class="fas fa-calendar-alt"></i> 3 Months</p>
+                            <a href="https://jobs.netflix.com/new-grads-interns" target="_blank" class="btn">Apply Now</a>
+                        </div>
+                        <div class="internship-card">
+                            <img src="https://th.bing.com/th/id/OIP.QXEzgc343r-ApewkLmVBBgAAAA?rs=1&pid=ImgDetMain" alt="Internshala" class="internship-logo">
+                            <h4>Internshala Internships</h4>
+                            <a href="https://internshala.com/" target="_blank" class="btn">Apply Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="career-resources">
+                <h3>Career Resources</h3>
+                <div class="horizontal-scroll-container">
+                    <div class="resources-grid">
+                        <div class="resource-card">
+                            <div class="resource-icon">
+                                <i class="fas fa-file-alt fa-3x"></i>
+                            </div>
+                            <h4>Resume Building Guide</h4>
+                            <p>Learn how to create an effective tech resume that gets noticed by recruiters</p>
+                            <a href="https://www.indeed.com/career-advice/resumes-cover-letters/software-engineer-resume" target="_blank" class="resource-link">Read More</a>
+                        </div>
+                        <div class="resource-card">
+                            <div class="resource-icon">
+                                <i class="fas fa-laptop-code fa-3x"></i>
+                            </div>
+                            <h4>Coding Interview Prep</h4>
+                            <p>Strategies and tips to perform well in technical interviews</p>
+                            <a href="https://www.hackerrank.com/interview/interview-preparation-kit" target="_blank" class="resource-link">Read More</a>
+                        </div>
+                        <div class="resource-card">
+                            <div class="resource-icon">
+                                <i class="fas fa-road fa-3x"></i>
+                            </div>
+                            <h4>Career Path Guide</h4>
+                            <p>Understanding career progression for software engineers</p>
+                            <a href="https://www.codecademy.com/" target="_blank" class="resource-link">Read More</a>
+                        </div>
+                        <div class="resource-card">
+                            <div class="resource-icon">
+                                <i class="fas fa-handshake fa-3x"></i>
+                            </div>
+                            <h4>Networking Tips</h4>
+                            <p>Learn how to build professional connections in the tech industry</p>
+                            <a href="https://www.forbes.com/sites/ashleystahl/2021/07/30/8-ways-to-effectively-network-in-tech/" target="_blank" class="resource-link">Read More</a>
+                        </div>
+                        <div class="resource-card">
+                            <div class="resource-icon">
+                                <i class="fas fa-tasks fa-3x"></i>
+                            </div>
+                            <h4>Project Portfolio Guide</h4>
+                            <p>Building a compelling portfolio to showcase your skills</p>
+                            <a href="https://www.freecodecamp.org/news/how-to-build-a-developer-portfolio-that-will-get-you-hired/" target="_blank" class="resource-link">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="notes" class="notes-section">
+        <div class="container">
+            <h2>My Notes</h2>
+            <div class="notes-container">
+                <div class="notes-header">
+                    <h3>Personal Study Notes</h3>
+                    <button id="add-note-btn"><i class="fas fa-plus"></i> Add New Note</button>
+                </div>
+                <div class="notes-filters">
+                    <ul id="note-categories">
+                        <li class="active" data-category="all">All Notes</li>
+                        <li data-category="python">Python</li>
+                        <li data-category="c">C</li>
+                        <li data-category="java">Java</li>
+                        <li data-category="cpp">C++</li>
+                        <li data-category="ds">Data Structures</li>
+                        <li data-category="algo">Algorithms</li>
+                        <li data-category="dbms">DBMS</li>
+                        <li data-category="web">Web Development</li>
+                        <li data-category="other">Other</li>
+                    </ul>
+                </div>
+                <div id="notes-list">
+                    <!-- Notes will be loaded here by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <div class="feedback-trigger">
+        <button id="open-feedback-modal" class="btn">Give Feedback</button>
+      </div>
+      
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>StudentFriend</h3>
+                    <p>Your complete CSE resource portal</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#programming">Programming</a></li>
+                        <li><a href="#online-compilers">Online Compilers</a></li>
+                        <li><a href="#job-tracker">Job Tracker</a></li>
+                        <li><a href="#notes">My Notes</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-envelope"></i>veda.s@gp.srmap.edu.in</p>
+                                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 StudentFriend. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Progress Modal -->
+    <div id="progress-modal" class="modal">
+        <div class="modal-content progress-modal-content">
+            <div class="modal-header">
+                <h3 id="progress-language-title" data-language="">Language Progress</h3>
+                <button id="close-progress-modal" class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="progress-slider-container">
+                    <label for="progress-slider">Update your progress:</label>
+                    <input type="range" id="progress-slider" min="0" max="100" step="5" value="0">
+                    <div id="progress-value-display" class="progress-value">0%</div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="save-progress" class="save-btn">Save Progress</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Note Modal -->
+    <div id="note-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add/Edit Note</h3>
+                <button id="close-note-modal" class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="note-title">Title</label>
+                    <input type="text" id="note-title" placeholder="Note title...">
+                </div>
+                <div class="form-group">
+                    <label for="note-category">Category</label>
+                    <select id="note-category">
+                        <option value="python">Python</option>
+                        <option value="c">C</option>
+                        <option value="java">Java</option>
+                        <option value="cpp">C++</option>
+                        <option value="ds">Data Structures</option>
+                        <option value="algo">Algorithms</option>
+                        <option value="dbms">DBMS</option>
+                        <option value="web">Web Development</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="note-content">Content</label>
+                    <textarea id="note-content" placeholder="Note content..."></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="cancel-note" class="cancel-btn">Cancel</button>
+                <button id="save-note" class="save-btn">Save Note</button>
+            </div>
+        </div>
+    </div>
+    
+
+    <script src="script.js"></script>
+</body>
+</html>
